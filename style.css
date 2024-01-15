@@ -1,7 +1,7 @@
 
 html{
     
-    background-color: black; 
+    background-color: rgb(62, 62, 62); 
     color: white;
 }
 
@@ -12,7 +12,7 @@ body{
 
 div{
 
-    /* put the borders in the inside of container */
+    
     box-sizing: border-box;
 }
 
