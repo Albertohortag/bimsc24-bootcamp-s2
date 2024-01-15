@@ -19,7 +19,8 @@ div{
 #navbar{
 
     height: 50px;
-
+    font-size: large;
+    font-family: Helvetica
 }
 
 #flex{
@@ -31,10 +32,14 @@ div{
 #sidebar{
 
     width:30%;
+    font-size: large;
+    font-family: Helvetica
 }
 
 #main{
     width:70%;
+    font-size: large;
+    font-family: Helvetica
 
 }
 
