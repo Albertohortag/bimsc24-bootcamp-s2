@@ -7,11 +7,13 @@ to define variables, methods and imports of other Vue compoennts. -->
 import { ref } from "vue";
 
 // Define variables and constants
-var count = ref(0);
+let count = ref(0);
+let name = ref("Alberto")
 
 // Define functions
 function increment() {
   count.value++;
+  console.log(name)
 }
 </script>
 
