@@ -6,18 +6,30 @@ to define variables, methods and imports of other Vue compoennts. -->
 // in template. It is sort of templatecement of getElementById (but better)
 import { ref } from "vue";
 
-// Define variables and constants
-let count = ref(0);
+
+
 let name = ref("Alberto Horta");
 let userInput = ref(""); // Variável para armazenar o texto do input
-  let contentText = ref(""); // Variável para armazenar o texto que será exibido em content
+let contentText = ref([]); // Variável para armazenar o texto que será exibido em content
+let sectionName = ref(""); // Para armazenar a seção a ser alterada
+let backgroundColor = ref(""); // Para armazenar a cor de fundo selecionada
 
-// Define functions
-function increment() {
-  count.value++;  
-  contentText.value = userInput.value;
-  console.log(name.value)
+
+function increment() { 
+  if (userInput.value.trim() !== "") { // Checa se o input não é vazio
+  contentText.value.push(userInput.value); // Adiciona o novo texto ao array
+  userInput.value = "";
+  }
 }
+
+function applyBackgroundColor() {
+  const section = sectionName.value;
+  const color = backgroundColor.value;
+  if (section === "navbar" || section === "sidebar" || section === "content") {
+    document.getElementById(section).style.backgroundColor = color;
+  }
+}
+
 </script>
 
 
@@ -36,16 +48,34 @@ function increment() {
     <div id="sidebar">
       Menu<br>
       <br>
-      <input type="text" v-model="userInput" placeholder="Type something here"><br>
+      <input
+      type="text"
+      v-model="userInput"
+      placeholder="Type something here"
+      @keyup.enter="increment"
+      ><br>
       <button @click="increment">Submit</button>
+      <input
+      type="text"
+      v-model="sectionName"
+      placeholder="navbar, sidebar, content"
+      @keyup.enter="applyBackgroundColor"
+      ><br>
+      <input type="text"
+      v-model="backgroundColor"
+      placeholder="Type background color"
+      @keyup.enter="applyBackgroundColor"
+      ><br>
+      <button @click="applyBackgroundColor">Change color</button>
     </div>
-    <div id="content">{{ contentText }}</div>
-    <div id="content">Main</div>
+    <div id="content">
+      <div v-for="(text, index) in contentText" :key="index">{{ text }}</div>
+    </div>
 </body>
 </html>
 </template>
 
-<!-- Style is for CSS styling -->
+
 <style>
 body, html {
     margin: 0;
