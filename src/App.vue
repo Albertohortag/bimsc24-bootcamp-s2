@@ -9,14 +9,14 @@ import { ref } from "vue";
 // Define variables and constants
 let count = ref(0);
 let name = ref("Alberto Horta");
+let userInput = ref(""); // Variável para armazenar o texto do input
+  let contentText = ref(""); // Variável para armazenar o texto que será exibido em content
 
 // Define functions
 function increment() {
   count.value++;  
   contentText.value = userInput.value;
   console.log(name.value)
-  let userInput = ref(""); // Variável para armazenar o texto do input
-  let contentText = ref(""); // Variável para armazenar o texto que será exibido em content
 }
 </script>
 
@@ -33,13 +33,10 @@ function increment() {
 </head>
 <body>
     <div id="navbar">Parametric View - by {{name}} </div>
-    <div id="sidebar">Menu<br>
+    <div id="sidebar">
+      Menu<br>
       <br>
-      <input type="text" v-model="userInput" placeholder="Digite algo aqui"><br>
-      <button @click="increment">Submit</button>
-      <br>
-      <br>
-      <input type="text" placeholder="Digite algo aqui"><br>
+      <input type="text" v-model="userInput" placeholder="Type something here"><br>
       <button @click="increment">Submit</button>
     </div>
     <div id="content">{{ contentText }}</div>
