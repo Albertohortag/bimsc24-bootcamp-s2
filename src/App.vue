@@ -8,77 +8,77 @@ import { ref } from "vue";
 
 // Define variables and constants
 let count = ref(0);
-let name = ref("Alberto")
+let name = ref("Alberto Horta");
 
 // Define functions
 function increment() {
-  count.value++;
-  console.log(name)
+  count.value++;  
+  contentText.value = userInput.value;
+  console.log(name.value)
+  let userInput = ref(""); // Variável para armazenar o texto do input
+  let contentText = ref(""); // Variável para armazenar o texto que será exibido em content
 }
 </script>
 
-<!-- Template is a HTML-based syntax that allows you to bind the rendered DOM elements
-with data, objects, functions etc. -->
+
 <template>
-  <div id="top-bar">
-    <div id="title-container">
-      <img class="logo-image" alt="Iaac logo" src="./assets/iaac-white.png" />
-      <h2>Digital Tools for Cloud-based Data Management</h2>
+  
+  <!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albert's Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="navbar">Parametric View - by {{name}} </div>
+    <div id="sidebar">Menu<br>
+      <br>
+      <input type="text" v-model="userInput" placeholder="Digite algo aqui"><br>
+      <button @click="increment">Submit</button>
+      <br>
+      <br>
+      <input type="text" placeholder="Digite algo aqui"><br>
+      <button @click="increment">Submit</button>
     </div>
-  </div>
-
-  <div id="content">
-    <!-- First example - button -->
-    <!-- Here we define what function will be called when button is clicked. -->
-    <button @click="increment">Add one more</button>
-
-    <!-- Now we print the value. The syntax to print variable is {{ variable_name }}. -->
-    <p style="margin-left: 8px">Count is: {{ count }}</p>
-
-  </div>
+    <div id="content">{{ contentText }}</div>
+    <div id="content">Main</div>
+</body>
+</html>
 </template>
 
 <!-- Style is for CSS styling -->
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  color: #2c3e50;
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-#top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.7);
+#navbar {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    height: 20px;
+    width: 100%;
 }
 
-#title-container {
-  display: flex;
-  align-items: center;
-  color: white;
-  margin-right: 1.5rem;
+#sidebar {
+    background-color: #ccc;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    text-align: center;
+    top: 60px;
+    height: calc(100%);
+    width: 10%;
+    overflow: auto;
 }
 
 #content {
-  display: flex;
-  padding: 20px
-}
-
-.logo-image {
-  height: 3.25rem;
-  padding: 0.5rem;
-}
-
-h2 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.05em;
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+    margin-left: 12%;
+    padding: 20px;
 }
 </style>
-
